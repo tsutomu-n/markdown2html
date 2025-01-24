@@ -1,0 +1,63 @@
+[project]
+name = "markdown2html"
+version = "0.1.0"
+description = "Japanese-optimized Markdown to HTML converter"
+requires-python = ">=3.12"
+dependencies = [
+    "markdown>=3.7",
+    "types-markdown>=3.7.0.20241204",
+    "pillow>=11.1.0",
+    "pydantic>=2.10.5",
+    "rich>=13.9.4",
+    "typer[all]>=0.15.1",
+    "weasyprint>=60.1",
+    "loguru>=0.7.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "mypy>=1.8.0",
+    "ruff>=0.1.9",
+    "pytest>=7.4.3",
+    "pytest-cov>=4.1.0",
+    "types-Pillow>=10.1.0.2",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "--cov=markdown2html --cov-report=term-missing"

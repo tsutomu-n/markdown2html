@@ -1,0 +1,2 @@
+[default.extend-words]
+"nd" = "nd"  # Name.Decorator for syntax highlighting
